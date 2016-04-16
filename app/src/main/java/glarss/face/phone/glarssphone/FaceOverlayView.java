@@ -20,6 +20,11 @@ public class FaceOverlayView extends View {
     private Bitmap mBitmap;
     private SparseArray<Face> mFaces;
 
+    private float mFaceOffsetX = 0;
+    private float mFaceOffsetY = 0;
+    private float mFaceWidth = 0;
+    private float mFaceHeight = 0;
+
     public FaceOverlayView(Context context) {
         this(context, null);
     }
@@ -48,14 +53,30 @@ public class FaceOverlayView extends View {
         }
     }
 
-    private double drawBitmap( Canvas canvas ) {
+    public float getmFaceOffsetX() {
+        return mFaceOffsetX;
+    }
+
+    public float getmFaceOffsetY() {
+        return mFaceOffsetY;
+    }
+
+    public float getmFaceWidth() {
+        return mFaceWidth;
+    }
+
+    public float getmFaceHeight() {
+        return mFaceHeight;
+    }
+
+    private double drawBitmap(Canvas canvas) {
         double viewWidth = canvas.getWidth();
         double viewHeight = canvas.getHeight();
         double imageWidth = mBitmap.getWidth();
         double imageHeight = mBitmap.getHeight();
         double scale = Math.min( viewWidth / imageWidth, viewHeight / imageHeight );
 
-        Rect destBounds = new Rect( 0, 0, (int) ( imageWidth * scale ), (int) ( imageHeight * scale ) );
+        Rect destBounds = new Rect(0, 0, (int) ( imageWidth * scale ), (int) ( imageHeight * scale ) );
         canvas.drawBitmap( mBitmap, null, destBounds, null );
         return scale;
     }
@@ -78,7 +99,12 @@ public class FaceOverlayView extends View {
         right = (float) scale * ( face.getPosition().x + face.getWidth() );
         bottom = (float) scale * ( face.getPosition().y + face.getHeight() );
 
-        canvas.drawRect( left, top, right, bottom, paint );
+        mFaceWidth = face.getWidth();
+        mFaceHeight = face.getHeight();
+        mFaceOffsetX = face.getPosition().x;
+        mFaceOffsetY = face.getPosition().y;
+
+        canvas.drawRect(left, top, right, bottom, paint);
     }
 
     public void setBitmap(Bitmap bitmap) {

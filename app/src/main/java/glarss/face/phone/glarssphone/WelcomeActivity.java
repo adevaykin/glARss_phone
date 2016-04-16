@@ -43,7 +43,7 @@ public class WelcomeActivity extends AppCompatActivity {
         assert next_button != null;
         next_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                goToDetailsActivity();
             }
         });
 
@@ -62,6 +62,17 @@ public class WelcomeActivity extends AppCompatActivity {
                 dispatchChoosePhotoIntent();
             }
         });
+    }
+
+    private void goToDetailsActivity() {
+        Intent intent = new Intent(getBaseContext(), UserDetailActivity.class);
+        intent.putExtra(UserDetailActivity.KEY_PHOTO_URI, photoUri.toString());
+        intent.putExtra(UserDetailActivity.KEY_FACE_WIDTH, faceOverlayView.getmFaceWidth());
+        intent.putExtra(UserDetailActivity.KEY_FACE_HEIGHT, faceOverlayView.getmFaceHeight());
+        intent.putExtra(UserDetailActivity.KEY_FACE_OFFSET_X, faceOverlayView.getmFaceOffsetX());
+        intent.putExtra(UserDetailActivity.KEY_FACE_OFFSET_Y, faceOverlayView.getmFaceOffsetY());
+
+        startActivity(intent);
     }
 
     @Override

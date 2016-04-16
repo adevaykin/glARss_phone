@@ -4,4 +4,7 @@
     <string name="next">Next</string>
     <string name="take_photo">Take Picture</string>
     <string name="choose_photo">Choose Photo</string>
+    <string name="submit">Submit</string>
+    <string name="comment">Comment</string>
+    <string name="email">E-Mail</string>
 </resources>
