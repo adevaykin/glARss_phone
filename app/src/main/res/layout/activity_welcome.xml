@@ -40,19 +40,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/choose_photo"
-            android:id="@+id/choose_photo_btn" />
+            android:id="@+id/choose_photo_btn"
+            android:enabled="true" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/take_photo"
-            android:id="@+id/take_photo_btn" />
+            android:id="@+id/take_photo_btn"
+            android:enabled="true" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/next"
-            android:id="@+id/next_btn" />
+            android:id="@+id/next_btn"
+            android:enabled="false" />
     </LinearLayout>
+
+    <glarss.face.phone.glarssphone.FaceOverlayView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/face_overlay_view"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/welcome_text"
+        android:layout_alignBottom="@+id/photo_frame" />
 
 </RelativeLayout>

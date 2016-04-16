@@ -1,6 +1,8 @@
 package glarss.face.phone.glarssphone;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
@@ -23,12 +25,15 @@ public class WelcomeActivity extends AppCompatActivity {
     static final int REQUEST_TAKE_PICTURE = 1;
     static final int REQUEST_CHOOSE_PHOTO = 2;
     Uri photoUri;
+    FaceOverlayView faceOverlayView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+        faceOverlayView = (FaceOverlayView)findViewById(R.id.face_overlay_view);
 
         initActions();
     }
@@ -81,10 +86,15 @@ public class WelcomeActivity extends AppCompatActivity {
                 InputStream inputStream = getContentResolver().openInputStream(photoUri);
                 Drawable drwbl  = Drawable.createFromStream(inputStream, photoUri.toString() );
                 photoView.setImageDrawable(drwbl);
+
+                doFaceDetection();
             } catch (FileNotFoundException e) {
                 // Do nothing
             }
         }
+
+
+        ((Button)findViewById(R.id.next_btn)).setEnabled(faceOverlayView.faceDetected());
     }
 
     private void dispatchTakePictureIntent() {
@@ -125,5 +135,11 @@ public class WelcomeActivity extends AppCompatActivity {
 
         photoUri = Uri.fromFile(image);
         return image;
+    }
+
+    private void doFaceDetection() throws FileNotFoundException {
+        InputStream inputStream = getContentResolver().openInputStream(photoUri);
+        Bitmap bMap = BitmapFactory.decodeStream(inputStream);
+        faceOverlayView.setBitmap(bMap);
     }
 }
