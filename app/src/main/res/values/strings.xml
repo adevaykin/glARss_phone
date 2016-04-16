@@ -7,4 +7,7 @@
     <string name="submit">Submit</string>
     <string name="comment">Comment</string>
     <string name="email">E-Mail</string>
+    <string name="title_activity_one">oneActivity</string>
+    <string name="done">Well done!</string>
+    <string name="done_details">Registration was successful and you are tracked now. Feel free to quit this app.</string>
 </resources>
