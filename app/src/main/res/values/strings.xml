@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">GlARss Phone</string>
+    <string name="welcome_text">Hello. Feel free to take a photo of yourself.</string>
+    <string name="next">Next</string>
+    <string name="take_photo">Take Photo</string>
 </resources>
