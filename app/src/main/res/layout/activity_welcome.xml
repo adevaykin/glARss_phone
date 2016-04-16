@@ -15,15 +15,16 @@
         android:text="@string/welcome_text"
         android:id="@+id/welcome_text" />
 
-    <FrameLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/welcome_text"
         android:id="@+id/photo_frame"
-        android:layout_above="@+id/buttons_container">
+        android:layout_above="@+id/buttons_container"
+        android:src="@drawable/user">
 
-    </FrameLayout>
+    </ImageView>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -34,6 +35,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:gravity="center_horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_photo"
+            android:id="@+id/choose_photo_btn" />
 
         <Button
             android:layout_width="wrap_content"
